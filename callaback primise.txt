@@ -1,0 +1,22 @@
+function add(num1,num2,callback){
+    let err = false
+    if(num1 == 0){
+        err = true
+    }
+    callback(num1+num2,err)
+}
+
+function muiltiply(num1,num2,callback){
+        callback(num1*num2)
+}
+
+add(10,20,(sum,err)=>{
+    console.log(sum)
+    if(err){
+        console.log("First number is zero")
+    }else{
+        muiltiply(sum,sum,(product)=>{
+            console.log(product)
+        })
+    }
+})

@@ -1,0 +1,37 @@
+handlebars
+ looping
+	in case of array
+
+	var value = ['1','2','3']
+	{{#each value}
+		<h1>{{@index}} , {{ this}}</h1>
+	{{/each}}
+
+	in case of object
+	const person = {
+			name:"ambadi",
+			comments:{
+				comment:"This is the comment",
+				date : "21/2/21
+				 }
+			}
+	{{#each value}
+		<h1>{{@index}} , {{ this}}</h1>
+	{{/each}}
+
+	{{#if}}
+		....
+	{{else}}
+		.....
+	{{/if}}
+
+	//////////////////
+	with insted of dot // avoiding nested dotting like person.comment.comment person.comment.cate like thaet
+	{{#with}}
+		{{#with comments}}
+			<h1>{{comment}</h1>
+		{{/with}}
+	{{/with}}
+
+	///////////////////
+	{{{body}}} // for printing the hbs content
