@@ -32,10 +32,19 @@ router.get("/add-products",(req,res)=>{
 
 router.post("/add-products", (req,res)=>{
   console.log(req.body)
-  console.log(req.files.image.data)//image is the name of the field
-  productHelper.addProduct(req.body,(result) =>{
-    res.render('admin/add-product')
-    console.log("product added")
+  let image = req.files.image;
+  console.log(req.files.image)//image is the name of the field
+  
+  productHelper.addProduct(req.body,(productId) =>{
+    image.mv('./public/product-images/'+productId+'.jpg',(err,done)=>{
+      if (!err) {
+        res.render('admin/add-product')
+        console.log("product added")
+      } else {
+        console.log(err)
+      }
+    })
+    
   })
   
 })
